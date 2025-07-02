@@ -1,0 +1,25 @@
+@let appState = appStateObs | async;
+<div>
+    <div class="center-flex">
+        <div style="width: 10px;">{{ boxIndex + 1 }}</div>
+        <div class="top-box"></div>
+    </div>
+    <div class="box"
+         [class.empty-box]="!appState.selected_optoins[boxIndex]"
+         [class.selected-box]="appState.current_box_index === boxIndex"
+         (click)="selectBox()">
+        @if (appState.selected_optoins[boxIndex]) {
+            <div>
+                <img [src]="appState.selected_optoins[boxIndex]?.imageUrl" class="box-image"/>
+            </div>
+        } @else {
+            <span>Select Element</span>
+        }
+    </div>
+    <div class="center-flex" style="position: relative;">
+        <div class="bottom-box"></div>
+        <div style="position: absolute;">
+            {{ appState.selected_optoins[boxIndex]?.value || '' }}
+        </div>
+    </div>
+</div>

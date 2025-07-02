@@ -1,0 +1,26 @@
+<div class="container wallpaper">
+    <div>
+        <label> Current view: </label>
+        <select [(ngModel)]="currentPage">
+            <option value='selection'>Selection</option>
+            <option value="about">About</option>
+        </select>
+    </div>
+
+    @if (currentPage === 'selection') {
+        <div>
+            <label> Amount of options: </label>
+            <select [(ngModel)]="amountOfOptions">
+                <option [value]="14">14</option>
+                <option [value]="28">28</option>
+                <option [value]="42">42</option>
+                <option [value]="56">56</option>
+            </select>
+        </div>
+        <pokemon-selection [amountOfOptions]="amountOfOptions"></pokemon-selection>
+    }
+
+    @if (currentPage === "about") {
+        <about/>
+    }
+</div>
